@@ -17,7 +17,7 @@ GENDER_CHOICES = [
 class User(AbstractUser):
     picture = models.ImageField(upload_to='profile_pictures', null=True, blank=True)
     full_name = models.CharField(max_length=100, help_text='Help people discover your account by using the name you\'re known by: either your full name, nickname, or business name.')
-    email = models.EmailField(unique=True)
+    email = models.EmailField(blank=True)
 
     # Optional fields
     bio = models.TextField(null=True, blank=True, help_text='Provide your personal information, even if the account is used for a business, a pet or something else. This won\'t be a part of your public profile.')
@@ -29,8 +29,8 @@ class User(AbstractUser):
     first_name = None
     last_name = None
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name','username',]
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['full_name']
 
     objects = CustomUserManager()
 

@@ -25,9 +25,9 @@
 
                 <form action="register" method="POST">
                     {% csrf_token %}
-                    <input class="input-box" type="text" name="user_data" required placeholder="mobile number, email">
-                    <input class="input-box" type="text" name="first_name" required placeholder="first name">
-                    <input class="input-box" type="text" name="last_name" placeholder="username">
+                    <input class="input-box" type="email" name="email" required placeholder="email">
+                    <input class="input-box" type="text" name="full_name" required placeholder="full name">
+                    <input class="input-box" type="text" name="username" placeholder="username">
                     <input class="input-box" type="password" name="password" placeholder="password">
                     <input class="input-box" class="button" type="submit" name="signup" value="signup">
 
