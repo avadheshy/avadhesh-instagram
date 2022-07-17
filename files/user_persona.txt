@@ -1,0 +1,67 @@
+User persona1
+
+User 
+Vishal Patel 24, Years, male.
+He like traveling very much.
+
+Personal details:
+He lives in Varanasi Utter Pradesh and single child with his parents. 
+His parents are well educated.
+He has a lot of friends in school and college. 
+He has done B.Tech from MJPRU Bareilly.
+
+Professional information:
+He is a software engineer.
+His salary is 25000 per month.
+He has done B.Tech.
+He knows Hindi and English.
+
+User environment:
+He uses mobile, web applications and social media apps.
+
+Psychic nature:
+He tries new apps very often.
+He like music and dancing very much.
+Service expectations are very high.
+
+End goal:
+
+He is a stroller and likes posting images and videos on instagram very much. 
+He wants an application that is easy to use and also compatible with him. 
+This instagram application  will be promising and effective for him.
+
+
+User persona2
+
+User 
+Akshay Singh 24, Years, male.
+He likes singing.
+
+Personal details:
+He lives in Kanpur, Utter Pradesh and single child with his parents. 
+His parents are well educated.
+He has a lot of friends in school and college. 
+He has done B.Tech from MJPRU Bareilly.
+
+Professional information:
+He is a software engineer at TCS.
+His salary is 30000 per month.
+He has done B.Tech.
+He knows Hindi and English.
+
+User environment:
+He uses mobile, web applications and social media apps.
+
+Psychic nature:
+He tries new apps very often.
+He like music, singing and dancing very much.
+Service expectations are very high.
+
+End goal:
+He wants that there will be thousands of his followers on instagram,  
+for this he likes to post images and videos on instagram. 
+He wants an application that is easy to use and also compatible with him. 
+This instagram application will be promising and effective  for him.
+
+
+

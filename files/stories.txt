@@ -1,0 +1,14 @@
+As a user of Instagram can you do the following things:
+1. You can create your user account.
+2. You can log in and log out from your account. 
+3. You can follow other people. 
+4. Other people can follow you.
+5. If you follow some person then you can see their posts, comments, 
+   photos and videos uploaded by that person and vice-versa.
+6. You can like others' photos and videos.
+7. You can upload your post.
+8. You can see all the people you follow.
+9. You can see all the people that follow you.
+10. you can update your post.
+11. You can delete your post.
+12. you can delete your account.
