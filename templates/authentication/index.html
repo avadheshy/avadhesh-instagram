@@ -19,7 +19,7 @@
         <div class="right">
             <div class="panel login">
                 <img id="logo" src="{% static 'img/instalogo.png' %}" alt="logo">
-                <form action="index" method="POST">
+                <form method="POST">
                     {% csrf_token %}
                     <input class="input-box" type="text" name="username" required
                         placeholder="Phone number, email or user name">

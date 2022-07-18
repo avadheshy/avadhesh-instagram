@@ -8,5 +8,17 @@
 </head>
 <body>
     <h1>hello you can see all the post here</h1>
+    <table>
+        {% for p in person %}
+        <tr>
+            <td>{{p.text}}</td>
+            <td>{{p.image}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+<a href="abc">user</a>
+
 </body>
 </html>

@@ -7,7 +7,11 @@ from core.models import Post
 # Create your views here.
 def abc(request):
     obj=User.objects.all()
-    return render(request,'user/person.html',{'person':obj})
+    context={
+        'person':obj,
+        'posts':Post.objects.all()
+    }
+    return render(request,'user/person.html',context)
 def posts(request):
     obj=Post.objects.all()
     context={

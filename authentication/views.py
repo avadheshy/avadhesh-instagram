@@ -8,15 +8,17 @@ from django.contrib import messages
 def person(request):
     return render(request,'authentication/person.html')
 def index(request):
+    print(request.method)
     if request.method=='POST':
         print("hai")
         username=request.POST['username']
         password=request.POST['password']
         if User.objects.filter(username=username).exists():
-            print("hello")
+            
             return redirect('person')
         else:
-            return redirect('register')
+            print("hello")
+            return redirect('abc')
     else:
 
         return render(request,'authentication/index.html')

@@ -1,0 +1,34 @@
+.nav{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+.refe
+{
+  display: flex;
+  justify-content: space-around;
+}
+.home{
+  margin: 10px;
+}
+.like{
+  margin: 10px;
+}
+.comment{
+  margin: 10px;
+}
+.profile{
+  margin: 10px;
+}
+table{
+  border: 1px solid black;
+  margin-left: 400px;
+  margin-top: 50px;
+}
+td{
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+

@@ -1,16 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Linking Css file  -->
     <link rel="stylesheet" href="{% static 'style/user/style.css' %}">
-    <!-- Linking Js file  -->
-
-    <!-- CSS only -->
     
     <!-- Title  -->
     <title>Instagram</title>
@@ -49,13 +45,15 @@
         <caption></caption>
         {% for i in person %}
         <tr>
-          <td><img width="100px" height="100px" src="{{i.picture.url}}" alt="photo"/></td>
+          <td><img width="100px" height="100px" src="{{i.picture.url}}" /></td>
           <td>{{i.email}}</td>
           <td><a href="#">follow</a></td>
         </tr>
         {% endfor %}
       </table>
-      <a href="#">posts</a>
+      
+
+      <a href="posts">posts</a>
 </body>
 
 
