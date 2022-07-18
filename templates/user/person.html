@@ -1,60 +1,93 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Linking Css file  -->
-    <link rel="stylesheet" href="{% static 'style/user/style.css' %}">
-    
-    <!-- Title  -->
-    <title>Instagram</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/style/user/style.css">
 </head>
 
 <body>
-    <div class="nav">
-        <div class="inst">
-          <h1>Instagram</h1>
+
+
+  <nav class="navbar">
+    <div class="nav-wrapper">
+      <img src="{% static 'img/instalogo.png' %}" class="brand-img" alt="">
+      <input type="text" class="search-box" placeholder="search">
+      <div class="nav-items">
+        <img src="{% static 'img/home.png' %}" class="icon" alt="">
+        <img src="{% static 'img/messanger.jpeg' %}" class="icon" alt="">
+        <img src="{% static 'img/plus.jpeg' %}" class="icon" alt="">
+        <img src="{% static 'img/liked.png' %} " class="icon" alt="">
+        <img src="{% static 'img/default.jpg' %}" class="icon" alt="">
+        <div class="icon user-profile"></div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="main">
+    <div class="wrapper">
+        <div class="left-col">
+            <div class="status-wrapper">
+                {% for person in top5person %}
+                <div class="status-card">
+                  <div class="profile-pic"><img src="{% static 'img/avatar.jpg'%}" alt=""></div>
+                  <p class="username">user_name_1</p>
+                </div>
+                {% endfor %}
+                
+              
         </div>
-        <div class="search">
-          <input type="text" placeholder="search">
-        </div>
-        <div class="refe">
-          <div class="home">
-            <a href="#">
-                <img src="{% static 'img/home.png' %}" alt="">
-            </a>
-          </div>
-          <div class="like">
-            <a href="#"><img width="20px" height="20px"src="{% static 'img/liked.png' %}" alt=""></a>
-          </div>
-          <div class="comment">
-            <a href="#">
-                <img width="20px" height="20px"src="{% static 'img/comment.png' %}" alt="">
-            </a>
-          </div>
-          <div class="profile">
-            <a href="#">
-                <img width="20px" height="20px" src="{% static 'img/default.jpg' %}" alt="">
-            </a>
-          </div>
+    </div>
+</section>
         </div>
       </div>
-      <table >
-        <caption></caption>
-        {% for i in person %}
-        <tr>
-          <td><img width="100px" height="100px" src="{{i.picture.url}}" /></td>
-          <td>{{i.email}}</td>
-          <td><a href="#">follow</a></td>
-        </tr>
-        {% endfor %}
-      </table>
-      
+  </section>
+  <section class="main">
+  <div class="wrapper">
+      <div class="left-col">
+          // status wrappers
+          {% for person in top5person %}
+          <div class="post">
+            <div class="info">
+                <div class="user">
+                    <div class="profile-pic"><img src="img/cover 2.png" alt=""></div>
+                    <p class="username">modern_web_channel</p>
+                </div>
+                <img src="img/option.PNG" class="options" alt="">
+            </div>
+            <img src="{{person.image.url}}" class="post-image" alt="">
+            <div class="post-content">
+                <div class="reaction-wrapper">
+                    <img src="{% static 'img/liked.png'%}" class="icon" alt="">
+                    <img src="{% static 'img/comment.png'%}" class="icon" alt="">
+                    <img src="{% static 'img/messanger.jpeg'%}" class="icon" alt="">
+                    <img src="{% static 'img/save.jpg' %}" class="save icon" alt="">
+                </div>
+                <p class="likes">1,012 likes</p>
+                <p class="description"><span>username </span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                <p class="post-time">2 minutes ago</p>
+            </div>
+            <div class="comment-wrapper">
+                <img src="img/smile.PNG" class="icon" alt="">
+                <input type="text" class="comment-box" placeholder="Add a comment">
+                <button class="comment-btn">post</button>
+            </div>
+        </div>
+          {% endfor %}
+          
+          
+          // +5 more post elements
+      </div>
+  </div>
+</section>
 
-      <a href="posts">posts</a>
 </body>
-
 
 </html>

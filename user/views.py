@@ -7,11 +7,14 @@ from core.models import Post
 # Create your views here.
 def abc(request):
     obj=User.objects.all()
-    context={
-        'person':obj,
-        'posts':Post.objects.all()
-    }
-    return render(request,'user/person.html',context)
+    top5person = Post.objects.all()[:5]
+    # context={
+    #     'person':obj,
+    #     'fivePerson':top5person,
+
+    # }
+    
+    return render(request,'user/person.html',{'top5person':top5person})
 def posts(request):
     obj=Post.objects.all()
     context={
