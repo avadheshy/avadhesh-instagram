@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-nu2s85q!#psx8_%7vykjh^)q-_*5ema75y5k-$+z#8m+h3q!6w
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS=[]
+ALLOWED_HOSTS=[ 'avadhesh-insta.herokuapp.com']
 #ALLOWED_HOSTS = ['avadhesh-insta.herokuapp.com']
 #ALLOWED_HOSTS=[]
 
