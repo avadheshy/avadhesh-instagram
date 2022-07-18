@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Linking Css file  -->
+    <link rel="stylesheet" href="{% static 'style/user/style.css' %}">
+    <!-- Linking Js file  -->
+
+    <!-- CSS only -->
+    
+    <!-- Title  -->
+    <title>Instagram</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="inst">
+          <h1>Instagram</h1>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="search">
+        </div>
+        <div class="refe">
+          <div class="home">
+            <a href="#">
+                <img src="{% static 'img/home.png' %}" alt="">
+            </a>
+          </div>
+          <div class="like">
+            <a href="#"><img width="20px" height="20px"src="{% static 'img/liked.png' %}" alt=""></a>
+          </div>
+          <div class="comment">
+            <a href="#">
+                <img width="20px" height="20px"src="{% static 'img/comment.png' %}" alt="">
+            </a>
+          </div>
+          <div class="profile">
+            <a href="#">
+                <img width="20px" height="20px" src="{% static 'img/default.jpg' %}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <table >
+        <caption></caption>
+        {% for i in person %}
+        <tr>
+          <td><img width="100px" height="100px" src="{{i.picture.url}}" alt="photo"/></td>
+          <td>{{i.email}}</td>
+          <td><a href="#">follow</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="#">posts</a>
+</body>
+
+
+</html>
