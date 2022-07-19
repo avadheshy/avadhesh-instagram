@@ -35,15 +35,4 @@ def register(request):
         
     return render(request,'authentication/register.html')
 
-def posts(request):
-    if request.method=='POST':
-        text=request.POST['text']
-        image=request.POST['image']
-        print(text)
-        post_obj=Post(text=text,image=image,user=request.user)
-        post_obj.save()
-        all_post=Post.objects.filter(user=request.user)
-        return redirect('profile')
 
-    else:
-        return render(request,'user/posts.html')

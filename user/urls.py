@@ -7,7 +7,5 @@ urlpatterns = [
     path('',views.login, name='login'),
     path('posts',views.posts,name='posts'),
     path('profile',views.profile,name='profile')
-
-
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
