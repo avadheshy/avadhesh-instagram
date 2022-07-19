@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -25,7 +25,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
     is_private_account = models.BooleanField(null=True, blank=True)
-
+    
     first_name = None
     last_name = None
 
@@ -36,3 +36,4 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+    

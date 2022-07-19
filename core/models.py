@@ -8,12 +8,15 @@ User = get_user_model()
 
 # Posts Model
 class Post(models.Model): 
-    text = models.CharField(max_length=140, blank=True, null=True)  # null == None, blank = ''
+    text = models.CharField(max_length=140, blank=True, null=True,)  # null == None, blank = ''
     image = models.ImageField(upload_to='post_images/')   # BASE_DIR -> media -> post_images
-    user = models.ForeignKey(User, on_delete=models.CASCADE)    # user_id
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_user')    # user_id
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    
+    liked=models.ManyToManyField(User,default=None,blank=True,related_name='user_liked')
+    @property
+    def num_like(self):
+        return self.liked.all().count()
    
 class Comment(models.Model):
     text = models.CharField(max_length=240)
@@ -29,8 +32,8 @@ class Comment(models.Model):
 
 # Likes Model
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='posts')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='users')
     liked_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
