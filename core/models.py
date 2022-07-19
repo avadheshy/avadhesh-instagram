@@ -9,7 +9,7 @@ User = get_user_model()
 # Posts Model
 class Post(models.Model): 
     text = models.CharField(max_length=140, blank=True, null=True,)  # null == None, blank = ''
-    image = models.ImageField(upload_to='post_images/')   # BASE_DIR -> media -> post_images
+    img = models.ImageField(upload_to='post_images/')   # BASE_DIR -> media -> post_images
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_user')    # user_id
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

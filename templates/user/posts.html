@@ -10,10 +10,10 @@
 </head>
 <body>
    <div class="conatiner-form">
-    <form  action="posts" method="POST">
+    <form enctype="multipart/form-data"  action="posts" method="POST">
         {% csrf_token %}
-        <input type="text" name="text" placeholder="enter your story"><br><br>
-        <input type="file" name="image"><br><br>
+        <input type="text" name="text" placeholder="enter your story"/><br><br>
+        <input type="file" name="img"/><br><br>
         <input type="submit">
     </form>
    </div>

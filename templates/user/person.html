@@ -68,7 +68,7 @@
                 <img src="img/option.PNG" class="options" alt="">
             </div>
     
-            <img src="{{person.image.url}}" class="post-image" alt="">
+            <img src="{{person.img.url}}" class="post-image" alt="">
             <div class="post-content">
                 <div class="reaction-wrapper">
                     <img src="{% static 'img/liked.png'%}" class="icon" alt="">
@@ -92,6 +92,7 @@
   </div>
 </section>
 
+{{request.user.username}}
 </body>
 
 </html>

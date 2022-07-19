@@ -1,23 +1,28 @@
-from email import message
-from re import T
+from django.contrib.auth import authenticate
 from django.shortcuts import redirect, render
 from user.models import User
 from django.contrib import messages
 from core.models import Post
+from django.contrib.auth import login
 
 
 # Create your views here.
 def person(request):
     return render(request,'authentication/person.html')
 def index(request):
-    print(request.method)
     if request.method=='POST':
-        
+        print('POst')
         username=request.POST['username']
         password=request.POST['password']
-        if User.objects.filter(username=username).exists():
+        print(username,password)
+        user=User.objects.filter(username=username)
+        
+        if user is not None:
+            login(request, user)
+            print('hello')
             return redirect('login')
         else:
+            print('hi')
             return redirect('/')
     else:
 
