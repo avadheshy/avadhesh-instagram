@@ -7,22 +7,19 @@ from django.contrib.auth import login
 
 
 # Create your views here.
+
 def person(request):
     return render(request,'authentication/person.html')
 def index(request):
     if request.method=='POST':
-        print('POst')
         username=request.POST['username']
         password=request.POST['password']
         print(username,password)
         user=User.objects.filter(username=username)
         
         if user is not None:
-            #login(request, user)
-            print('hello')
             return redirect('login')
         else:
-            print('hi')
             return redirect('/')
     else:
 

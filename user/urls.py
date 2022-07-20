@@ -8,5 +8,7 @@ urlpatterns = [
     path('posts', views.posts, name='posts'),
     path('profile', views.profile, name='profile'),
     path('logout', views.logout, name='logout'),
+    path('comments/<int:post_id>',views.comments,name='comments'),
+    path('likes/<int:like_id>',views.likes,name='likes'),
 ]
 #urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
