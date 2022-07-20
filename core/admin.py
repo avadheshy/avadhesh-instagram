@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Like,Comment,Post,Follow
+from core.models import Like, Comment, Post, Follow
 # Register your models here.
 admin.site.register(Like)
 admin.site.register(Comment)

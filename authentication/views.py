@@ -18,7 +18,7 @@ def index(request):
         user=User.objects.filter(username=username)
         
         if user is not None:
-            login(request, user)
+            #login(request, user)
             print('hello')
             return redirect('login')
         else:
