@@ -25,12 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'django-insecure-nu2s85q!#psx8_%7vykjh^)q-_*5ema75y5k-$+z#8m+h3q!6w'
-
+#SECRET_KEY = 'django-insecure-nu2s85q!#psx8_%7vykjh^)q-_*5ema75y5k-$+z#8m+h3q!6w'
+SECRET_KEY=config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS=[config('ALLOWED_HOSTS')]
 #ALLOWED_HOSTS=[ 'avadhesh-insta.herokuapp.com']
-ALLOWED_HOSTS = ['avadhesh-insta.herokuapp.com']
+#ALLOWED_HOSTS = ['avadhesh-insta.herokuapp.com']
 #ALLOWED_HOSTS=[]
 
 
@@ -88,10 +89,10 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'insta-clone',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
         'PORT': '5432',
     }
 }
