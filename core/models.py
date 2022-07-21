@@ -13,7 +13,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='user_user')    # user_id
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    liked=models.ManyToManyField(User,default=None,blank=True,related_name='user_liked')
+    liked=models.ManyToManyField(User,default=0,blank=True,related_name='user_liked')
     @property
     def num_like(self):
         return self.liked.all().count()

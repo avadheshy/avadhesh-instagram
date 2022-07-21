@@ -19,7 +19,13 @@ def login(request):
 
 
 def profile(request):
-    return render(request, 'user/profile.html')
+    user_post=Post.objects.filter(user=request.user).order_by('created_on')
+    post_count=Post.objects.filter(user=request.user).count()
+    context={
+        'user_post':user_post,
+        'post_count':post_count,
+    }
+    return render(request, 'user/profile.html',context)
 
 
 def posts(request):
@@ -39,16 +45,22 @@ def posts(request):
 def comments(request, post_id):
 
     if request.method == 'POST':
+        text = request.POST['text']
         post_obj = Post.objects.get(id=post_id)
         user_obj = User.objects.get(username=request.user.username)
-        print(user_obj)
-        new_like = Like(user=user_obj, post=post_obj)
-        new_like.save()
-        print('new liked is saved')
-        redirect('/')
+        new_comment = Comment(text=text, user=user_obj, post=post_obj)
+        new_comment.save()
+        # print('new comment is saved in ')
+        like_count=Like.objects.filter(post=post_obj).count()
+        user_comments=Comment.objects.filter(post=post_obj).order_by('commented_on')
+        context={
+        'post_obj':post_obj,
+        'like_count':like_count,
+        'comments':user_comments,
+         }
+        return render(request,'user/likes_comments.html',context)
     else:
-        print('else')
-        redirect('/')
+        return redirect('login')
 
 
 def likes(request, like_id):
@@ -56,6 +68,11 @@ def likes(request, like_id):
     user_obj = User.objects.get(username=request.user.username)
     new_like = Like(user=user_obj, post=post_obj)
     new_like.save()
-    print('new like is saved')
-    redirect('')
-
+    like_count=Like.objects.filter(post=post_obj).count()
+    user_comments=Comment.objects.filter(post=post_obj).order_by('commented_on')
+    context={
+        'post_obj':post_obj,
+        'like_count':like_count,
+        'comments':user_comments,
+    }
+    return render(request,'user/likes_comments.html',context)

@@ -21,7 +21,10 @@
       <img src="{% static 'img/instalogo.png' %}" class="brand-img" alt="">
       <input type="text" class="search-box" placeholder="search">
       <div class="nav-items">
-        <img src="{% static 'img/home.png' %}" class="icon" alt="">
+        <a href="login">
+            <img src="{% static 'img/home.png' %}" class="icon" alt="">
+        </a>
+        
 
         <img src="{% static 'img/messanger.jpeg' %}" class="icon" alt="">
 
@@ -38,30 +41,13 @@
       </div>
     </div>
   </nav>
-
-  <section class="main">
-    <div class="wrapper">
-      <div class="left-col">
-        <div class="status-wrapper">
-          {% for person in top5person %}
-          <div class="status-card">
-            <div class="profile-pic"><img src="{% static 'img/avatar.jpg'%}" alt=""></div>
-            <p class="username">{{person.user}}</p>
-          </div>
-          {% endfor %}
-
-
-        </div>
-      </div>
-
-  </section>
+</section>
   </div>
   </div>
   </section>
   <section class="main">
     <div class="wrapper">
       <div class="left-col">
-        {% for person in top5person %}
         <div class="post">
           <div class="info">
             <div class="user">
@@ -71,7 +57,7 @@
             <img src="img/option.PNG" class="options" alt="">
           </div>
 
-          <img src="{{person.img.url}}" class="post-image" alt="">
+          <img src="{{post_obj.img.url}}" class="post-image" alt="">
           <div class="post-content">
             <div class="reaction-wrapper">
               <a href="likes/{{person.id}}">
@@ -81,11 +67,14 @@
               <img src="{% static 'img/messanger.jpeg'%}" class="icon" alt="">
               <img src="{% static 'img/save.jpg' %}" class="save icon" alt="">
             </div>
-            <p class="likes">0 likes</p>
+            <p class="likes">{{like_count}} likes</p>
             <p class="description"><span>{{person.user}} <p>{{person.text}}</p>
                 <!-- <p class="post-time">2 minutes ago</p> -->
           </div>
           <div class="comment-wrapper">
+            {% for comment in comments%}
+                <div class="like_comments">{{comment.text}}</div>
+            {% endfor %}
             <form action="comments/{{person.id}}" method="POST">
               {% csrf_token %}
               <img src="img/smile.PNG" class="icon" alt="">
@@ -95,7 +84,6 @@
             </form>
           </div>
         </div>
-        {% endfor %}
 
       </div>
     </div>
