@@ -39,19 +39,24 @@ class Like(models.Model):
 
     def __str__(self):
         return str(self.post.id)
+    @property
+    def likes_count(self):
+        count = self.like_set.count()
+        return count
 
     
 
 # Followers Model
 class Follow(models.Model):
-    user = models.ForeignKey(User, related_name='follow_follower', on_delete=models.CASCADE, editable=False)
+    user = models.ForeignKey(User, related_name='follow_follower', on_delete=models.CASCADE)
     followed = models.ForeignKey(User, related_name='follow_followed', on_delete=models.CASCADE)
     followed_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
 
     def __str__(self):
-        return f"{self.user} --> {self.followed}"
+        return f"{self.user} {self.followed}"
+    
 
     
 

@@ -38,5 +38,13 @@ class User(AbstractUser):
 
     objects = CustomUserManager()
 
-    # def __str__(self):
-    #     return self.email
+    # def __str__(sel    return self.email
+    @property
+    def follower_count(self):
+        count = self.follow_followed.count()
+        return count
+
+    @property
+    def following_count(self):
+        count = self.follow_followed.count()
+        return count

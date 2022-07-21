@@ -15,17 +15,23 @@ def logout(request):
 
 def login(request):
     top5person = Post.objects.all().order_by('-created_on')
-    return render(request, 'user/person.html', {'top5person': top5person})
+    personExceptMe=User.objects.exclude(username=request.user.username)
+    context={
+        'top5person':top5person,
+        'personExceptMe':personExceptMe,
+        'user':request.user
+    }
+    return render(request, 'user/person.html', context)
 
 
 def profile(request):
-    user_post=Post.objects.filter(user=request.user).order_by('created_on')
-    post_count=Post.objects.filter(user=request.user).count()
-    context={
-        'user_post':user_post,
-        'post_count':post_count,
+    user_post = Post.objects.filter(user=request.user).order_by('created_on')
+    post_count = Post.objects.filter(user=request.user).count()
+    context = {
+        'user_post': user_post,
+        'post_count': post_count,
     }
-    return render(request, 'user/profile.html',context)
+    return render(request, 'user/profile.html', context)
 
 
 def posts(request):
@@ -51,14 +57,15 @@ def comments(request, post_id):
         new_comment = Comment(text=text, user=user_obj, post=post_obj)
         new_comment.save()
         # print('new comment is saved in ')
-        like_count=Like.objects.filter(post=post_obj).count()
-        user_comments=Comment.objects.filter(post=post_obj).order_by('commented_on')
-        context={
-        'post_obj':post_obj,
-        'like_count':like_count,
-        'comments':user_comments,
-         }
-        return render(request,'user/likes_comments.html',context)
+        like_count = Like.objects.filter(post=post_obj).count()
+        user_comments = Comment.objects.filter(
+            post=post_obj).order_by('commented_on')
+        context = {
+            'post_obj': post_obj,
+            'like_count': like_count,
+            'comments': user_comments,
+        }
+        return render(request, 'user/likes_comments.html', context)
     else:
         return redirect('login')
 
@@ -68,11 +75,12 @@ def likes(request, like_id):
     user_obj = User.objects.get(username=request.user.username)
     new_like = Like(user=user_obj, post=post_obj)
     new_like.save()
-    like_count=Like.objects.filter(post=post_obj).count()
-    user_comments=Comment.objects.filter(post=post_obj).order_by('commented_on')
-    context={
-        'post_obj':post_obj,
-        'like_count':like_count,
-        'comments':user_comments,
+    like_count = Like.objects.filter(post=post_obj).count()
+    user_comments = Comment.objects.filter(
+        post=post_obj).order_by('commented_on')
+    context = {
+        'post_obj': post_obj,
+        'like_count': like_count,
+        'comments': user_comments,
     }
-    return render(request,'user/likes_comments.html',context)
+    return render(request, 'user/likes_comments.html', context)

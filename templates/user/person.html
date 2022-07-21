@@ -38,29 +38,18 @@
       </div>
     </div>
   </nav>
-
   <section class="main">
     <div class="wrapper">
       <div class="left-col">
         <div class="status-wrapper">
-          {% for person in top5person %}
+          {% for person in personExceptMe %}
           <div class="status-card">
             <div class="profile-pic"><img src="{% static 'img/avatar.jpg'%}" alt=""></div>
-            <p class="username">{{person.user}}</p>
+            <p class="username">{{person.username}}</p>
           </div>
           {% endfor %}
-
-
         </div>
-      </div>
-
-  </section>
-  </div>
-  </div>
-  </section>
-  <section class="main">
-    <div class="wrapper">
-      <div class="left-col">
+        
         {% for person in top5person %}
         <div class="post">
           <div class="info">
@@ -75,7 +64,7 @@
           <div class="post-content">
             <div class="reaction-wrapper">
               <a href="likes/{{person.id}}">
-              <img src="{% static 'img/liked.png'%}" class="icon" alt="">
+                <img src="{% static 'img/liked.png'%}" class="icon" alt="">
               </a>
               <img src="{% static 'img/comment.png'%}" class="icon" alt="">
               <img src="{% static 'img/messanger.jpeg'%}" class="icon" alt="">
@@ -96,10 +85,38 @@
           </div>
         </div>
         {% endfor %}
+        
 
       </div>
-    </div>
+      <div class="right-col">
+        <div class="profile-card">
+          <div class="profile-pic">
+            <img src="{% static 'img/avatar.jpg' %}" alt="">
+          </div>
+          <div>
+            <p class="username">{{user.username}}</p>
+            <p class="sub-text">{{user.full_name}}</p>
+          </div>
+          
+        </div>
+        <p class="suggestion-text">Suggestions for you</p>
+        {% for person in personExceptMe %}
+        <div class="profile-card">
+          <div class="profile-pic">
+            <img src="{% static 'img/avatar.jpg' %}" alt="">
+          </div>
+          <div>
+            <p class="username">{{person.username}}</p>
+          </div>
+          <button class="action-btn">follow</button>
+        </div>
+        {% endfor %}
+        
+      </div>
+
   </section>
+
+
 
 </body>
 
