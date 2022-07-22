@@ -10,5 +10,6 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('comments/<int:post_id>',views.comments,name='comments'),
     path('likes/<int:like_id>',views.likes,name='likes'),
+    path('follow/<int:post_user_id>',views.follow,name='follow'),
 ]
 #urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

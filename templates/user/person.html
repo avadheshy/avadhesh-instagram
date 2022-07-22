@@ -42,28 +42,28 @@
     <div class="wrapper">
       <div class="left-col">
         <div class="status-wrapper">
-          {% for person in personExceptMe %}
+          {% for person in personFollow %}
           <div class="status-card">
             <div class="profile-pic"><img src="{% static 'img/avatar.jpg'%}" alt=""></div>
-            <p class="username">{{person.username}}</p>
+            <p class="username">{{ person.username }}</p>
           </div>
           {% endfor %}
         </div>
-        
-        {% for person in top5person %}
+
+        {% for abc in follower_post %}
         <div class="post">
           <div class="info">
             <div class="user">
               <div class="profile-pic"><img src="{% static 'img/avatar.jpg' %}" alt=""></div>
-              <p class="username">{{person.user}}</p>
+              <p class="username">{{abc.user}}</p>
             </div>
             <img src="#" class="options" alt="">
           </div>
 
-          <img src="{{person.img.url}}" class="post-image" alt="">
+          <img src="{{abc.img.url}}" class="post-image" alt="">
           <div class="post-content">
             <div class="reaction-wrapper">
-              <a href="likes/{{person.id}}">
+              <a href="likes/{{abc.id}}">
                 <img src="{% static 'img/liked.png'%}" class="icon" alt="">
               </a>
               <img src="{% static 'img/comment.png'%}" class="icon" alt="">
@@ -71,21 +71,21 @@
               <img src="{% static 'img/save.jpg' %}" class="save icon" alt="">
             </div>
             <p class="likes">0 likes</p>
-            <p class="description"><span>{{person.user}} <p>{{person.text}}</p>
+            <p class="description"><span>{{abc.text}} <p>{{person.text}}</p>
                 <!-- <p class="post-time">2 minutes ago</p> -->
           </div>
           <div class="comment-wrapper">
-            <form action="comments/{{person.id}}" method="POST">
+            <form action="comments/{{abc.id}}" method="POST">
               {% csrf_token %}
               <img src="#" class="icon" alt="">
               <!-- <input type="text" id="objid" name="objid" value="{{Post.id}}" hidden> -->
               <input type="text" name="text" class="comment-box" placeholder="Add a comment">
-              <button type="submit" class="comment-btn">post</button>
+              <button type="submit" class="comment-btn">comment</button>
             </form>
           </div>
         </div>
         {% endfor %}
-        
+
 
       </div>
       <div class="right-col">
@@ -97,10 +97,10 @@
             <p class="username">{{user.username}}</p>
             <p class="sub-text">{{user.full_name}}</p>
           </div>
-          
+
         </div>
         <p class="suggestion-text">Suggestions for you</p>
-        {% for person in personExceptMe %}
+        {% for person in non_followers %}
         <div class="profile-card">
           <div class="profile-pic">
             <img src="{% static 'img/avatar.jpg' %}" alt="">
@@ -108,10 +108,13 @@
           <div>
             <p class="username">{{person.username}}</p>
           </div>
-          <button class="action-btn">follow</button>
+          <form action="follow/{{person.id}}" method="POST">
+            {% csrf_token%}
+            <button type="submit" class="action-btn">follow</button>
+          </form>
         </div>
         {% endfor %}
-        
+
       </div>
 
   </section>

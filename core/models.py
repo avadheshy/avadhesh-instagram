@@ -48,8 +48,10 @@ class Like(models.Model):
 
 # Followers Model
 class Follow(models.Model):
-    user = models.ForeignKey(User, related_name='follow_follower', on_delete=models.CASCADE)
-    followed = models.ForeignKey(User, related_name='follow_followed', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='follow_follower', 
+    on_delete=models.CASCADE)
+    followed = models.ForeignKey(User, related_name='follow_followed', 
+    on_delete=models.CASCADE)
     followed_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
