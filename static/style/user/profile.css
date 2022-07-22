@@ -7,7 +7,8 @@
 *::after {
     box-sizing: border-box;
 }
-a:link{
+
+a:link {
     text-decoration: none;
 }
 
