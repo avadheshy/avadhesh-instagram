@@ -1,4 +1,6 @@
-import imp
+
+from re import U
+from traceback import print_tb
 from django import urls
 from django.shortcuts import redirect, render
 from user.models import User
@@ -109,4 +111,30 @@ def follow(request, post_user_id):
         user_obj = User.objects.get(username=request.user.username)
         new_follow = Follow(user=user_obj, followed=post_user_obj)
         new_follow.save()
+        return redirect('login')
+def otherProfile(request,otherProfile_id):
+    if request.method=='POST':
+        otherUser=User.objects.get(id=otherProfile_id)
+        allPosts=Post.objects.filter(user=otherUser)
+        following_count = Follow.objects.filter(user=otherUser).count()
+        followers_count = Follow.objects.filter(followed=otherUser).count()
+        postCount=len(allPosts)
+        context={
+            'allPost':allPosts,
+            'follow_count':following_count,
+            'followers_count':followers_count,
+            'otherProfile_id':otherProfile_id,
+            'otherUser':otherUser,
+            'postCount':postCount
+           
+        }
+        return render(request, 'user/userProfile.html', context)
+
+def unfollow(request,unfollow_id):
+    if request.method=='POST':
+        followedUser=User.objects.filter(id=unfollow_id)
+        print('hello')
+        del_follower=Follow.objects.filter(user_id=request.user.id).filter(followed_id=unfollow_id)
+    
+        del_follower.delete()
         return redirect('login')

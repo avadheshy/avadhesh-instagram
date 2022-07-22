@@ -51,10 +51,11 @@
 
                 <div class="profile-user-settings">
 
-                    <h1 class="profile-user-name">{{user.username}}</h1>
-
-                    <button class="btn profile-edit-btn">Edit Profile</button>
-
+                    <h1 class="profile-user-name">{{otherUser.username}}</h1>
+                    <form action="unfollow/{{otherUser.id}}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn profile-edit-btn">unfollow</button>
+                    </form>
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog"
                             aria-hidden="true"></i></button>
 
@@ -62,61 +63,41 @@
 
                 <div class="profile-stats">
 
-                    <li><span class="profile-stat-count">{{post_count}}</span> posts</li>
-                    <li><span class="profile-stat-count">{{request.user.follower_count}}</span> followers</li>
-                    <li><span class="profile-stat-count">{{following_count}}</span> following</li>
+                    <li><span class="profile-stat-count">{{postCount}}</span> posts</li>
+                    <li><span class="profile-stat-count">{{followers_count}}</span> followers</li>
+                    <li><span class="profile-stat-count">{{follow_count}}</span> following</li>
 
                 </div>
 
                 <div class="profile-bio">
 
-                    <p><span class="profile-real-name">{{user.bio}}</span></p>
+                    <p><span class="profile-real-name">{{otherUser.bio}}</span></p>
 
                 </div>
 
             </div>
-            <!-- End of profile section -->
 
         </div>
-        <!-- End of container -->
+
 
     </header>
 
-    <main>
-        {% for post in user_post %}
-        <div class="container">
-
-            <div class="gallery">
-
-                <div class="gallery-item" tabindex="0">
-
-                    <img src="{{ post.img.url }}" class="gallery-image" alt="">
-<!-- 
-                    <div class="gallery-item-info">
-
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i
-                                    class="fas fa-heart" aria-hidden="true"></i>56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
-                                    class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-
-                    </div> -->
-
-                </div>
 
 
+    {% for userPost in allPost %}
+    <div class="container">
+        <div class="gallery">
+
+            <div class="">
+                <img src="{{userPost.img.url}}" class="gallery-image" alt="none" />
 
             </div>
-            <!-- End of gallery -->
-
-
-
         </div>
-        {% endfor %}
-       
+    </div>
+    {% endfor %}
 
-    </main>
+
+
 </body>
 
 </html>

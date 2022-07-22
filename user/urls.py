@@ -11,5 +11,8 @@ urlpatterns = [
     path('comments/<int:post_id>',views.comments,name='comments'),
     path('likes/<int:like_id>',views.likes,name='likes'),
     path('follow/<int:post_user_id>',views.follow,name='follow'),
+    path('otherProfile/<int:otherProfile_id>',views.otherProfile,name='otherProfile'),
+    path('otherProfile/unfollow/<int:unfollow_id>',views.unfollow,name='unfollow'),
+
 ]
 #urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

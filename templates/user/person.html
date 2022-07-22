@@ -54,8 +54,13 @@
         <div class="post">
           <div class="info">
             <div class="user">
+             
               <div class="profile-pic"><img src="{% static 'img/avatar.jpg' %}" alt=""></div>
-              <p class="username">{{abc.user}}</p>
+         
+            <form action="otherProfile/{{abc.user.id}}" method="POST">
+              {% csrf_token %}
+              <button><p type="submit" class="username">{{abc.user}}</p></button>
+            </form>
             </div>
             <img src="#" class="options" alt="">
           </div>
