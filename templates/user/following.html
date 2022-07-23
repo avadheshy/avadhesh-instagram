@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/user/follow.css' %}">
+    <title>Instagram</title>
+</head>
+
+<body>
+    <div class="follower-following">
+        <h1>people you following</h1>
+        <table>
+
+            {% for people in people_follow %}
+            <tr>
+                <td><img src="{% static 'img/avatar.jpg' %}" alt=""></td>
+                <h1>
+                    <td>{{people}}</td>
+                </h1>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -63,9 +63,19 @@
                 <div class="profile-stats">
 
                     <li><span class="profile-stat-count">{{post_count}}</span> posts</li>
-                    <li><span class="profile-stat-count">{{request.user.follower_count}}</span> followers</li>
-                    <li><span class="profile-stat-count">{{following_count}}</span> following</li>
+                    <form action="followers" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <li><span class="profile-stat-count">{{request.user.follower_count}}</span> followers</li>
+                        </button>
 
+                    </form>
+                    <form action="following" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <li><span class="profile-stat-count">{{following_count}}</span> following</li>
+                        </button>
+                    </form>
                 </div>
 
                 <div class="profile-bio">
@@ -90,8 +100,8 @@
 
                 <div class="gallery-item" tabindex="0">
 
-                    <img src="{{ post.img.url }}" class="gallery-image" alt="">
-<!-- 
+                    <img height="300px" src="{{ post.img.url }}" class="gallery-image" alt="">
+                    <!-- 
                     <div class="gallery-item-info">
 
                         <ul>
@@ -114,7 +124,7 @@
 
         </div>
         {% endfor %}
-       
+
 
     </main>
 </body>
